@@ -1,0 +1,17 @@
+/**index.wxss**/
+page {
+  text-align: center;
+  padding-top: 300rpx;
+}
+
+.title{
+  color: rgb(9, 9, 75);
+  font-size: 50rpx;
+  font-weight: 900;
+}
+.image{
+  margin-top: 50rpx;
+  margin-bottom: 50rpx;
+  margin-left: 50rpx;
+}
+

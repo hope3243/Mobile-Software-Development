@@ -1,0 +1,5 @@
+<view class="title">hello {{list[index].wording}}!</view>
+
+<image class="image" src="{{list[index].imgs}}" mode="widthFix"></image>
+
+<button bind:tap="onClick">点击</button>
