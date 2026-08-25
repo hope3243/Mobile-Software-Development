@@ -1,0 +1,56 @@
+<navigation-bar title="个人名片" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="page">
+    <image class="banner" src="/img/card.jpg" mode="aspectFill"></image>
+
+    <view class="content">
+      <text class="name">王斯语</text>
+      <text class="tagline">一名普通本科学生</text>
+
+      <view class="divider"></view>
+
+      <view class="block">
+        <text class="block-title">基本信息</text>
+        <text class="block-text">中国海洋大学 · 信息学部</text>
+        <text class="block-text">智能科学与技术 2024级</text>
+      </view>
+
+      <view class="block">
+        <text class="block-title">研究方向</text>
+        <view class="tag-row">
+          <text class="tag">计算机视觉</text>
+          <text class="tag">多模态感知</text>
+          <text class="tag">海洋智能信息</text>
+        </view>
+      </view>
+
+      <view class="block">
+        <text class="block-title">关于我</text>
+        <text class="block-text">山东淄博人，好客山东欢迎您！</text>
+        <text class="block-text">正在努力向科研前沿靠拢的普通本科生一枚。</text>
+        <text class="block-text">积极参与学科竞赛与科研实践，也在学生社团和党务工作中搬砖，闲下来就去做志愿者。</text>
+      </view>
+
+      <view class="block">
+        <text class="block-title">爱好</text>
+        <view class="tag-row">
+          <text class="tag tag-accent">听歌</text>
+          <text class="tag tag-accent">原神</text>
+          <text class="tag">3D视觉</text>
+          <text class="tag">程序开发</text>
+        </view>
+        <text class="block-text small">提瓦特大陆常驻居民。</text>
+      </view>
+
+      <button class="btn" bindtap="toggleGenshin" wx:if="{{!showGenshin}}">如果你也玩原神，点击这里</button>
+
+      <view wx:if="{{showGenshin}}" class="genshin-box">
+        <text class="block-title">原神 UID</text>
+        <image class="id-shot" src="/img/impact.jpg" mode="widthFix"></image>
+        <view class="footer">
+          <text>向着星辰与深渊，欢迎旅行者来提瓦特找我玩！</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
