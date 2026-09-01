@@ -1,0 +1,270 @@
+page{
+  background-color:#f0f2f5;
+}
+.page-wrap{
+  min-height: 100vh;
+}
+/*登录面板*/
+#myLogin {
+  position: relative;
+  height: 420rpx;
+  overflow: hidden;
+}
+.login-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(5px);
+  transform: scale(1.15);
+}
+/*渐变半透明遮罩：白天模式*/
+.login-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0,90,170,0.25) 0%, rgba(0,55,120,0.5) 45%, rgba(0,35,85,0.9) 100%);
+}
+.login-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+#myIcon {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4rpx solid #ffffff;
+}
+#nickName {
+  color: white;
+  font-size: 32rpx;
+  font-weight: 500;
+  margin: 20rpx 0 12rpx;
+}
+.theme-switch{
+  background: rgba(255,255,255,0.2);
+  border: 1rpx solid rgba(255,255,255,0.5);
+  padding: 8rpx 28rpx;
+  margin-bottom: 12rpx;
+}
+.theme-switch text{
+  color: #fff;
+  font-size: 24rpx;
+}
+.logout-btn {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 26rpx;
+  border: 1rpx solid rgba(255,255,255,0.6);
+  padding: 8rpx 28rpx;
+}
+.logout-btn::after{
+  border:none;
+}
+#loginBtn {
+  width: 360rpx;
+  color: #003d7a;
+  background: white;
+  border-radius: 4rpx;
+  line-height: normal;
+  font-weight: 500;
+}
+#loginBtn::after {
+  border: none;
+}
+/*登录表单头像*/
+.avatar-box {
+  position: relative;
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.95);
+  border:3rpx solid #fff;
+}
+.avatar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.avatar-btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0 !important;
+  border: none;
+  background: transparent;
+  opacity: 0;
+}
+.avatar-btn::after {
+  border: none;
+}
+.nickname-input {
+  width: 80%;
+  height: 76rpx;
+  background: white;
+  border-radius: 4rpx;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+  color: #333;
+  box-sizing: border-box;
+  margin:20rpx 0;
+}
+.login-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap:20rpx;
+}
+.login-actions button {
+  border-radius: 4rpx;
+}
+.login-cancel {
+  color: white;
+  font-size: 28rpx;
+  padding:8rpx 16rpx;
+}
+
+/* ========== 我的收藏 ========== */
+#myFavorites {
+  background-color:#f0f2f5;
+  padding:24rpx;
+}
+.fav-header{
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+.fav-bar{
+  width: 6rpx;
+  height: 28rpx;
+  background: #003d7a;
+  margin-right: 14rpx;
+}
+#myFavorites .fav-header text{
+  font-size:30rpx;
+  font-weight:bold;
+  color:#003d7a;
+}
+/*收藏列表：和首页统一的分割线样式*/
+#myFavorites .list-item{
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #e8e8e8;
+  display:flex;
+  align-items: flex-start;
+}
+#myFavorites .list-item:last-child{
+  border-bottom: none;
+}
+#myFavorites .list-img-wrap{
+  position: relative;
+  width: 220rpx;
+  height: 150rpx;
+  margin-right: 24rpx;
+  flex-shrink: 0;
+}
+#myFavorites .list-img-wrap image{
+  width: 220rpx;
+  height: 150rpx;
+}
+#myFavorites .date-tag{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: rgba(0,61,122,0.85);
+  color: #fff;
+  font-size: 20rpx;
+  padding: 4rpx 12rpx;
+}
+#myFavorites .text-wrap{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+#myFavorites .news-title{
+  font-size:30rpx;
+  color:#003d7a;
+  line-height:44rpx;
+  font-weight:500;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin-bottom: 4rpx;
+}
+#myFavorites .news-summary{
+  font-size: 24rpx;
+  color: #999;
+  line-height: 36rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  margin-top: 6rpx;
+}
+#myFavorites .news-meta{
+  display:flex;
+  align-items:center;
+  justify-content: flex-end;
+  margin-top: 10rpx;
+}
+#myFavorites .meta-read{
+  font-size:22rpx;
+  color:#999;
+}
+
+/* ========== 夜间模式 ========== */
+.page-wrap.dark{
+  background: #1a1a1a;
+}
+/*夜间模式：登录渐变遮罩改为深色渐变*/
+.dark .login-mask {
+  background: linear-gradient(135deg, rgba(40,40,60,0.55) 0%, rgba(20,20,40,0.72) 45%, rgba(8,8,20,0.88) 100%);
+}
+.dark #myFavorites{
+  background: #1a1a1a;
+}
+.dark .fav-header text{
+  color: #6ab0ff;
+}
+.dark .fav-bar{
+  background: #6ab0ff;
+}
+.dark #myFavorites .list-item{
+  border-bottom-color: #333;
+}
+.dark #myFavorites .news-title{
+  color: #6ab0ff;
+}
+.dark #myFavorites .news-summary{
+  color: #999;
+}
+.dark #myFavorites .meta-read{
+  color: #777;
+}
+.dark #myFavorites .date-tag{
+  background: rgba(106,176,255,0.85);
+}
+.dark .nickname-input{
+  background: #2a2a2a;
+  color: #ddd;
+}
+.dark .login-cancel{
+  color: #ccc;
+}

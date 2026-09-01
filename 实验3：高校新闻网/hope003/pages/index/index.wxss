@@ -1,0 +1,245 @@
+page{
+  background-color:#f0f2f5;
+}
+.page-wrap{
+  min-height: 100vh;
+}
+/*轮播图*/
+swiper {
+  height: 420rpx;
+}
+swiper image {
+  width: 100%;
+  height: 100%;
+}
+swiper-item{
+  position: relative;
+}
+.swiper-title{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 20rpx 30rpx 28rpx;
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  color: #fff;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/*分类按钮 + 搜索框*/
+.search-wrap{
+  display: flex;
+  align-items: center;
+  padding:20rpx 24rpx 16rpx;
+}
+.category-btn{
+  flex-shrink: 0;
+  height: 72rpx;
+  line-height: 72rpx;
+  padding: 0 28rpx;
+  background: #003d7a;
+  color: #fff;
+  font-size: 26rpx;
+  margin-right: 16rpx;
+}
+.search-box{
+  flex: 1;
+  background:#ffffff;
+  border: 1rpx solid #e0e0e0;
+  padding:4rpx 8rpx;
+}
+.search-input{
+  width:100%;
+  height:72rpx;
+  padding:0 24rpx;
+  font-size:28rpx;
+  box-sizing:border-box;
+}
+/*新闻列表标题*/
+.section-header{
+  display: flex;
+  align-items: center;
+  padding: 10rpx 24rpx 16rpx;
+}
+.section-bar{
+  width: 6rpx;
+  height: 28rpx;
+  background: #003d7a;
+  margin-right: 14rpx;
+}
+.section-text{
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #003d7a;
+}
+/*新闻列表——紧凑卡片（和收藏一致）*/
+#news-list{
+  padding: 0 24rpx 24rpx;
+}
+.list-item{
+  background:#ffffff;
+  border: 1rpx solid #e8e8e8;
+  padding:20rpx;
+  margin-bottom:16rpx;
+  display:flex;
+  align-items:center;
+}
+.list-item image{
+  width:160rpx;
+  height:110rpx;
+  margin-right:20rpx;
+  flex-shrink:0;
+}
+.text-wrap{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.news-title{
+  font-size:28rpx;
+  color:#222;
+  line-height:42rpx;
+  font-weight:500;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.news-meta{
+  display:flex;
+  align-items:center;
+  margin-top:12rpx;
+  font-size:22rpx;
+  color:#999;
+}
+.meta-date{
+  margin-right:20rpx;
+}
+.meta-read{
+  margin-left:auto;
+}
+/*遮罩层*/
+.mask{
+  position: fixed;
+  left: 0; top: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s;
+}
+.mask.show{
+  opacity: 1;
+  visibility: visible;
+}
+/*侧边栏抽屉*/
+.sidebar-drawer{
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 420rpx;
+  background: #fff;
+  z-index: 999;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  padding-top: 60rpx;
+  box-shadow: 4rpx 0 20rpx rgba(0,0,0,0.1);
+}
+.sidebar-drawer.open{
+  transform: translateX(0);
+}
+.sidebar-header{
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #003d7a;
+  padding: 0 30rpx 30rpx;
+  border-bottom: 1rpx solid #eee;
+  margin-bottom: 10rpx;
+}
+.sidebar-item{
+  padding: 28rpx 30rpx;
+  font-size: 28rpx;
+  color: #555;
+  position: relative;
+}
+.sidebar-item.active{
+  color: #003d7a;
+  font-weight: bold;
+  background: #f5f8fc;
+}
+.sidebar-item.active::before{
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 6rpx;
+  background: #003d7a;
+}
+/*回到顶部*/
+.back-top{
+  position: fixed;
+  right: 30rpx;
+  bottom: 120rpx;
+  width: 76rpx;
+  height: 76rpx;
+  line-height: 76rpx;
+  text-align: center;
+  background: rgba(0,61,122,0.85);
+  color: #fff;
+  font-size: 36rpx;
+  z-index: 997;
+}
+/* ========== 夜间模式 ========== */
+.page-wrap.dark{
+  background: #1a1a1a;
+}
+.dark .category-btn{
+  background: #6ab0ff;
+  color: #1a1a1a;
+}
+.dark .search-box{
+  background: #2a2a2a;
+  border-color: #3a3a3a;
+}
+.dark .search-input{
+  color: #ddd;
+}
+.dark .section-text{
+  color: #6ab0ff;
+}
+.dark .section-bar{
+  background: #6ab0ff;
+}
+.dark .list-item{
+  background: #2a2a2a;
+  border-color: #333;
+}
+.dark .news-title{
+  color: #ddd;
+}
+.dark .meta-date,
+.dark .meta-read{
+  color: #888;
+}
+.dark .sidebar-drawer{
+  background: #222;
+}
+.dark .sidebar-header{
+  color: #6ab0ff;
+  border-bottom-color: #333;
+}
+.dark .sidebar-item{
+  color: #aaa;
+}
+.dark .sidebar-item.active{
+  color: #6ab0ff;
+  background: #1e2a3a;
+}
+.dark .sidebar-item.active::before{
+  background: #6ab0ff;
+}
+.dark .back-top{
+  background: rgba(106,176,255,0.85);
+}

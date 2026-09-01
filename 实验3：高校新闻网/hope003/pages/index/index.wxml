@@ -1,0 +1,55 @@
+<view class="page-wrap {{isDark ? 'dark' : ''}}" style="background-color: {{isDark ? '#1a1a1a' : '#f0f2f5'}};">
+  <!--轮播图-->
+  <swiper indicator-dots="true" autoplay="true" interval="5000" duration="500">
+    <block wx:for="{{swiperImg}}" wx:key="index">
+      <swiper-item bindtap="goToDetail" data-id="{{item.id}}">
+        <image src="{{item.src}}"></image>
+        <view class="swiper-title">{{item.title}}</view>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!--分类按钮 + 搜索框-->
+  <view class="search-wrap">
+    <view class="category-btn" bindtap="openSidebar">☰ 分类</view>
+    <view class="search-box">
+      <input class="search-input" placeholder="搜索新闻标题" bindinput="onSearchInput" value="{{keyword}}" />
+    </view>
+  </view>
+
+  <!--新闻列表标题-->
+  <view class="section-header">
+    <view class="section-bar"></view>
+    <text class="section-text">{{currentCategory}}</text>
+  </view>
+
+  <!--新闻列表-->
+  <view id='news-list'>
+    <view class='list-item' wx:for="{{showNewsList}}" wx:for-item="news" wx:key="id" bindtap="goToDetail" data-id="{{news.id}}">
+      <image src='{{news.poster}}'></image>
+      <view class="text-wrap">
+        <text class="news-title">{{news.title}}</text>
+        <view class="news-meta">
+          <text class="meta-date">{{news.add_date}}</text>
+          <text class="meta-read">阅读 {{news.readNum||0}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!--遮罩层-->
+  <view class="mask {{sidebarOpen ? 'show' : ''}}" bindtap="closeSidebar"></view>
+
+  <!--侧边栏抽屉-->
+  <view class="sidebar-drawer {{sidebarOpen ? 'open' : ''}}">
+    <view class="sidebar-header">新闻分类</view>
+    <view class="sidebar-item {{currentCategory === item ? 'active' : ''}}"
+          wx:for="{{categories}}" wx:key="*this"
+          bindtap="switchCategory" data-category="{{item}}">
+      {{item}}
+    </view>
+  </view>
+
+  <!--回到顶部-->
+  <view class="back-top" wx:if="{{showBackTop}}" bindtap="backToTop">↑</view>
+</view>
