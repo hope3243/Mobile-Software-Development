@@ -1,0 +1,14 @@
+{
+  "libVersion": "3.17.2",
+  "projectname": "hope004.1",
+  "setting": {
+    "urlCheck": true,
+    "coverView": true,
+    "lazyloadPlaceholderEnable": false,
+    "preloadBackgroundData": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "compileHotReLoad": true,
+    "skylineRenderEnable": false
+  }
+}

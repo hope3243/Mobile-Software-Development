@@ -1,0 +1,182 @@
+<!-- 游戏页 -->
+<view class="page">
+  <!-- 背景装饰 -->
+  <view class="bg-decor">
+    <view class="bg-circle bg-circle-1"></view>
+    <view class="bg-circle bg-circle-2"></view>
+    <view class="sun"></view>
+    <view class="cloud cloud-1"></view>
+    <view class="cloud cloud-2"></view>
+  </view>
+
+  <!-- 自定义导航栏 -->
+  <view class="navbar" style="padding-top:{{statusBarHeight}}px;">
+    <view class="navbar-inner" style="padding-right:{{navRightOffset}}px;">
+      <view class="nav-btn" bindtap="goBack">
+        <text class="nav-arrow">‹</text>
+      </view>
+      <view class="nav-title-box">
+        <text class="nav-title">第 {{level}} 关</text>
+        <text class="nav-sub">{{levelName}}</text>
+      </view>
+      <view class="nav-right">
+        <view class="nav-btn" bindtap="toggleSound">
+          <text class="nav-list">{{soundOn ? '🔊' : '🔇'}}</text>
+        </view>
+        <view class="nav-btn" bindtap="openLevelPicker">
+          <text class="nav-list">≡</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 统计栏 -->
+  <view class="stats-bar">
+    <view class="stat-item">
+      <text class="stat-label">步数</text>
+      <text class="stat-value">{{moves}}</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-label">推箱</text>
+      <text class="stat-value">{{pushes}}</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-label">时间</text>
+      <text class="stat-value">{{timeStr}}</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-label">最佳</text>
+      <text class="stat-value">{{bestMoves !== null ? bestMoves : '--'}}</text>
+    </view>
+  </view>
+
+  <!-- 游戏画布（支持滑动操作） -->
+  <view
+    class="canvas-wrap"
+    style="width:{{canvasSize}}px;height:{{canvasSize}}px;"
+    bindtouchstart="onTouchStart"
+    bindtouchend="onTouchEnd"
+    catchtouchmove="noop"
+  >
+    <canvas id="gameCanvas" type="2d" class="game-canvas"></canvas>
+  </view>
+  <view class="swipe-tip">在棋盘上滑动手指也可以移动哦</view>
+
+  <!-- 方向键 -->
+  <view class="dpad">
+    <view class="dpad-row">
+      <view class="dpad-cell"></view>
+      <view class="dpad-cell">
+        <view class="dpad-btn" hover-class="dpad-btn-hover" bindtap="up">▲</view>
+      </view>
+      <view class="dpad-cell"></view>
+    </view>
+    <view class="dpad-row">
+      <view class="dpad-cell">
+        <view class="dpad-btn" hover-class="dpad-btn-hover" bindtap="left">◀</view>
+      </view>
+      <view class="dpad-cell">
+        <view class="dpad-btn dpad-btn-center" hover-class="dpad-btn-hover" bindtap="undo">↺</view>
+      </view>
+      <view class="dpad-cell">
+        <view class="dpad-btn" hover-class="dpad-btn-hover" bindtap="right">▶</view>
+      </view>
+    </view>
+    <view class="dpad-row">
+      <view class="dpad-cell"></view>
+      <view class="dpad-cell">
+        <view class="dpad-btn" hover-class="dpad-btn-hover" bindtap="down">▼</view>
+      </view>
+      <view class="dpad-cell"></view>
+    </view>
+  </view>
+
+  <!-- 底部操作 -->
+  <view class="bottom-bar">
+    <button class="action-btn action-btn-ghost" hover-class="action-btn-hover" bindtap="restart">重新开始</button>
+  </view>
+
+  <!-- 开场剧情 -->
+  <view class="overlay story-overlay" wx:if="{{showStory}}">
+    <view class="story-card">
+      <view class="story-head">
+        <text class="story-title">第 {{level}} 关 · {{levelName}}</text>
+      </view>
+      <view class="story-chat">
+        <image class="story-bird" src="/images/icons/bird.png" mode="aspectFit"></image>
+        <view class="story-bubble">
+          <text class="story-text">{{storyText}}</text>
+        </view>
+      </view>
+      <button class="story-btn" hover-class="action-btn-hover" bindtap="closeStory">开始游戏 ▶</button>
+    </view>
+  </view>
+
+  <!-- 选关面板 -->
+  <view class="overlay" wx:if="{{showLevelPicker}}" bindtap="closeLevelPicker">
+    <view class="sheet" catchtap="noop">
+      <view class="sheet-title">选择关卡</view>
+      <view class="sheet-grid">
+        <view
+          class="sheet-item {{item.unlocked ? '' : 'sheet-item-locked'}} {{item.index === level - 1 ? 'sheet-item-current' : ''}}"
+          wx:for="{{pickerLevels}}"
+          wx:key="index"
+          data-index="{{item.index}}"
+          bindtap="pickLevel"
+        >
+          <text class="sheet-num">{{item.index + 1}}</text>
+          <text class="sheet-name">{{item.name}}</text>
+          <text class="sheet-state" wx:if="{{item.done}}">✓</text>
+          <text class="sheet-state" wx:elif="{{!item.unlocked}}">🔒</text>
+        </view>
+      </view>
+      <button class="sheet-close" hover-class="action-btn-hover" bindtap="closeLevelPicker">关闭</button>
+    </view>
+  </view>
+
+  <!-- 过关庆祝弹层 -->
+  <view class="overlay win-overlay" wx:if="{{showWin}}">
+    <view class="confetti-wrap">
+      <view
+        class="confetti-piece"
+        wx:for="{{confetti}}"
+        wx:key="id"
+        style="left:{{item.left}};width:{{item.size}};height:{{item.size}};background:{{item.color}};border-radius:{{item.radius}};animation-delay:{{item.delay}};animation-duration:{{item.dur}};"
+      ></view>
+    </view>
+    <view class="win-card">
+      <view class="win-char">
+        <image class="win-bird" src="/images/icons/bird.png" mode="aspectFit"></image>
+        <view class="win-bubble">
+          <text class="win-bubble-text">{{winLine}}</text>
+        </view>
+      </view>
+      <text class="win-title">恭喜通关！</text>
+      <text class="win-new" wx:if="{{isNewRecord}}">🏆 刷新最佳纪录</text>
+      <view class="win-stats">
+        <view class="win-stat">
+          <text class="win-stat-value">{{winStats.moves}}</text>
+          <text class="win-stat-label">步数</text>
+        </view>
+        <view class="win-stat">
+          <text class="win-stat-value">{{winStats.pushes}}</text>
+          <text class="win-stat-label">推箱</text>
+        </view>
+        <view class="win-stat">
+          <text class="win-stat-value">{{winStats.time}}</text>
+          <text class="win-stat-label">用时</text>
+        </view>
+      </view>
+      <view class="win-actions">
+        <button wx:if="{{!isLastLevel}}" class="win-btn win-btn-primary" hover-class="win-btn-hover" bindtap="goNext">下一关 ▶</button>
+        <button wx:else class="win-btn win-btn-primary" hover-class="win-btn-hover" bindtap="goBack">返回选关</button>
+        <button class="win-btn win-btn-ghost" hover-class="win-btn-hover" bindtap="restartFromWin">再来一次</button>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+
+

@@ -1,0 +1,36 @@
+/**
+ * 推箱子游戏 - 全局样式（明亮卡通风，与老师图片配色一致）
+ */
+page {
+  background: linear-gradient(180deg, #d9f1ff 0%, #f2fbff 45%, #fff6e0 100%);
+  color: #40586e;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+view, text, button, image {
+  box-sizing: border-box;
+}
+
+/* 通用按钮清除默认样式 */
+button {
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border-radius: 0;
+  font-size: 28rpx;
+  line-height: 1.2;
+  color: inherit;
+}
+button::after {
+  border: none;
+}
+
+/* 隐藏滚动条 */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}

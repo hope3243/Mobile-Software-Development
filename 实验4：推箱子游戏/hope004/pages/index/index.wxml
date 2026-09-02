@@ -1,0 +1,90 @@
+<!-- 首页：关卡选择 -->
+<view class="page">
+  <!-- 顶部渐变背景装饰 -->
+  <view class="bg-decor">
+    <view class="bg-circle bg-circle-1"></view>
+    <view class="bg-circle bg-circle-2"></view>
+    <view class="sun"></view>
+    <view class="cloud cloud-1"></view>
+    <view class="cloud cloud-2"></view>
+  </view>
+
+  <!-- 自定义导航栏 -->
+  <view class="navbar" style="padding-top:{{statusBarHeight}}px;">
+    <view class="navbar-inner" style="padding-right:{{navRightOffset}}px;">
+      <view class="navbar-left">
+        <text class="navbar-title">推箱子</text>
+        <text class="navbar-sub">Sokoban</text>
+      </view>
+      <view class="navbar-actions">
+        <view class="navbar-right unlock-btn" hover-class="navbar-btn-hover" bindtap="openUnlock">
+          <text class="reset-btn">🔓 破解版</text>
+        </view>
+        <view class="navbar-right" hover-class="navbar-btn-hover" bindtap="resetProgress">
+          <text class="reset-btn">重置进度</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 主体内容 -->
+  <view class="content">
+    <!-- 进度卡片 -->
+    <view class="hero-card">
+      <view class="hero-info">
+        <text class="hero-title">推箱子大作战</text>
+        <text class="hero-desc">推箱子，炸飞敌人，战斗吧！</text>
+      </view>
+      <view class="hero-emoji">🐥</view>
+    </view>
+
+    <!-- 关卡列表 -->
+    <view class="level-grid">
+      <view
+        class="level-card {{item.unlocked ? '' : 'level-card-locked'}}"
+        wx:for="{{levels}}"
+        wx:key="index"
+        data-level="{{item.index}}"
+        bindtap="chooseLevel"
+      >
+        <view class="level-preview-wrap">
+          <image class="level-preview-img" src="{{item.image}}" mode="aspectFill"></image>
+          <view class="lock-mask" wx:if="{{!item.unlocked}}">
+            <text class="lock-icon">🔒</text>
+          </view>
+          <view class="level-badge">第 {{item.index + 1}} 关</view>
+        </view>
+        <view class="level-info">
+          <text class="level-name">{{item.name}}</text>
+          <view class="level-record">
+            <text wx:if="{{item.bestMoves !== null}}" class="record-text">最佳 {{item.bestMoves}} 步 · {{item.bestTime}}</text>
+            <text wx:else class="record-text record-text-empty">{{item.unlocked ? '未通关' : '未解锁'}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="footer-tip">🎮 点击关卡开始挑战，通关后解锁下一关</view>
+  </view>
+
+  <!-- 破解版解锁问答 -->
+  <view class="overlay" wx:if="{{showUnlock}}" bindtap="closeUnlock">
+    <view class="unlock-card" catchtap="noop">
+      <text class="unlock-title">🔓 破解版解锁</text>
+      <text class="unlock-tip">想一键解锁全部关卡？先回答对一个问题：</text>
+      <view class="unlock-question">{{unlockQuestion}}</view>
+      <view class="unlock-options">
+        <view
+          class="unlock-option"
+          wx:for="{{unlockOptions}}"
+          wx:key="index"
+          data-correct="{{item.correct}}"
+          bindtap="answerUnlock"
+        >
+          <text>{{item.label}}</text>
+        </view>
+      </view>
+      <button class="unlock-close" hover-class="action-btn-hover" bindtap="closeUnlock">答不上来，先不破解</button>
+    </view>
+  </view>
+</view>
