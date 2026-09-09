@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "photo-card": "/components/photo-card/index"
+  },
+  "enablePullDownRefresh": true
+}

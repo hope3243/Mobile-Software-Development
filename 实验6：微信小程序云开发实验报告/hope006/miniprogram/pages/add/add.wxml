@@ -1,0 +1,50 @@
+<view class="page">
+  <view class="row between">
+    <view>
+      <view class="eyebrow">CREATE A LITTLE MEMORY</view>
+      <view class="heading spaced">分享你的这一刻</view>
+    </view>
+    <view class="draft-button {{busy ? 'disabled' : ''}}" bindtap="saveDraft">存草稿</view>
+  </view>
+  <view class="notice">{{isCloud?'作品将公开展示在社区，请上传你分享的图片。':'本地体验 · 发布作品仅保存在当前设备，不会上传云端。'}}</view>
+  <view class="upload-grid">
+    <view wx:for="{{images}}" wx:key="*this" class="upload-item">
+      <image src="{{item}}" mode="aspectFill" data-index="{{index}}" bindtap="preview" /><text
+        wx:if="{{index===0}}" class="cover-label">封面</text><button class="remove" data-index="{{index}}"
+        bindtap="removeImage" disabled="{{busy}}">×</button>
+    </view>
+    <view wx:if="{{images.length < 9}}" class="upload-item chooser {{busy ? 'disabled' : ''}}"
+      bindtap="choose">
+      <text class="plus">＋</text>
+      <text class="chooser-label">添加照片</text>
+      <view class="upload-count"><text>{{images.length}}</text><text>/</text><text>9</text></view>
+    </view>
+  </view>
+  <view class="muted">首张作为封面 · 支持相册与拍摄 · 单张不超过 10 MB</view>
+  <view class="field">
+    <view class="row between label"><text>给瞬间起个名字</text><text class="muted">{{title.length}} / 40</text>
+    </view><input value="{{title}}" maxlength="40" data-field="title" bindinput="input" disabled="{{busy}}"
+      placeholder="比如：山野之间，自有答案" />
+  </view>
+  <view class="field">
+    <view class="label">照片背后的故事</view><textarea value="{{description}}" maxlength="500"
+      data-field="description" bindinput="input" disabled="{{busy}}" placeholder="写下此刻的心情、拍摄地点，或一点小小的灵感…" />
+    <view class="muted">{{description.length}} / 500</view>
+  </view>
+  <view class="field">
+    <view class="label">选择一个主题</view><text wx:for="{{categories}}" wx:key="*this"
+      class="tag {{category===item?'active':''}}" data-value="{{item}}" bindtap="category">{{item}}</text>
+  </view>
+  <view class="field">
+    <view class="label">拍摄地点 · 选填</view><input value="{{location}}" maxlength="40" data-field="location"
+      bindinput="input" disabled="{{busy}}" placeholder="写下一个地点" />
+  </view>
+  <view wx:if="{{busy}}" class="progress spaced">
+    <view style="width:{{progress}}%"></view>
+  </view>
+  <view wx:if="{{error}}" class="error spaced">{{error}}</view><button class="primary spaced"
+    bindtap="publish" loading="{{busy}}"
+    disabled="{{busy}}">{{busy?'正在发布 '+progress+'%':'发布这一刻 ↗'}}</button><button class="secondary spaced"
+    bindtap="history" disabled="{{busy}}">查看我的发布记录 →</button>
+  <view class="endnote">让世界，多一束你的光。</view>
+</view>

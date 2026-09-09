@@ -1,0 +1,16 @@
+<view class="page">
+  <view class="eyebrow">CREATOR'S JOURNAL</view>
+  <view class="heading spaced">{{name}}的光影集</view>
+  <view class="muted spaced">每一张照片，都是看世界的另一种方式</view>
+  <view class="error spaced" wx:if="{{error}}" bindtap="reload">{{error}} · 点击重试</view>
+  <view class="columns">
+    <view class="column">
+      <photo-card wx:for="{{left}}" wx:key="_id" photo="{{item}}" />
+    </view>
+    <view class="column">
+      <photo-card wx:for="{{right}}" wx:key="_id" photo="{{item}}" />
+    </view>
+  </view>
+  <view class="empty" wx:if="{{!loading && !left.length && !error}}">这里还没有公开作品</view>
+  <view class="loading">{{loading?'正在加载…':hasMore?'继续向下发现更多':'— 光影未完，故事待续 —'}}</view>
+</view>

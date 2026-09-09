@@ -1,0 +1,193 @@
+.page {
+  padding-bottom: 210rpx
+}
+
+.brand {
+  padding: 4rpx 0 32rpx
+}
+
+.brandmark {
+  background: #284f43;
+  color: #f0f1df;
+  font-family: serif;
+  font-size: 40rpx;
+  width: 74rpx;
+  height: 74rpx;
+  border-radius: 22rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 18rpx
+}
+
+.brandname {
+  font-size: 39rpx;
+  font-weight: 700;
+  margin-bottom: 8rpx
+}
+
+.brandname text {
+  font-size: 18rpx;
+  letter-spacing: 4rpx;
+  margin-left: 16rpx
+}
+
+.brand .muted {
+  font-size: 19rpx
+}
+
+.issue {
+  text-align: right;
+  font-size: 17rpx;
+  letter-spacing: 2rpx;
+  color: #8f9b87;
+  line-height: 1.8
+}
+
+.hero {
+  height: 370rpx;
+  border-radius: 26rpx;
+  overflow: hidden;
+  position: relative;
+  background: #416044
+}
+
+.hero image,
+.shade {
+  position: absolute;
+  width: 100%;
+  height: 100%
+}
+
+.shade {
+  background: linear-gradient(90deg, rgba(16, 40, 26, .67), rgba(16, 40, 26, .04))
+}
+
+.hero-copy {
+  position: relative;
+  color: #fff;
+  padding: 36rpx 32rpx
+}
+
+.hero-label {
+  font-size: 17rpx;
+  letter-spacing: 3rpx;
+  color: #d7e3c5
+}
+
+.hero-title {
+  font-size: 45rpx;
+  font-family: serif;
+  font-weight: 600;
+  line-height: 1.55;
+  margin-top: 24rpx;
+  letter-spacing: 3rpx
+}
+
+.hero-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20rpx;
+  margin-top: 26rpx;
+  color: #e4ebdc
+}
+
+.hero-bottom text {
+  background: #ffffff20;
+  border: 1rpx solid #ffffff55;
+  border-radius: 30rpx;
+  padding: 9rpx 17rpx
+}
+
+.search {
+  padding: 12rpx 24rpx;
+  height: 82rpx;
+  border: 1rpx solid #e4e8dd;
+  background: #fff;
+  border-radius: 18rpx;
+  margin-top: 26rpx
+}
+
+.search-icon {
+  font-size: 44rpx;
+  color: #8b9b81;
+  margin-right: 16rpx
+}
+
+.search input {
+  flex: 1;
+  min-width: 0;
+  font-size: 24rpx
+}
+
+.clear-search {
+  flex: 0 0 48rpx;
+  width: 48rpx;
+  height: 48rpx;
+  margin-left: 12rpx;
+  border-radius: 50%;
+  background: #eef1eb;
+  color: #7d897e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  line-height: 1
+}
+
+.tabs {
+  white-space: nowrap;
+  margin: 30rpx 0 36rpx
+}
+
+.tab {
+  display: inline-block;
+  font-size: 26rpx;
+  padding: 15rpx 27rpx;
+  margin-right: 12rpx;
+  color: #8b9485;
+  border-radius: 40rpx
+}
+
+.selected {
+  background: #294f43;
+  color: #fff
+}
+
+.green-dot {
+  display: inline-block;
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 50%;
+  background: #aabf75;
+  margin-left: 16rpx;
+  vertical-align: middle
+}
+
+.publish-fab {
+  position: fixed;
+  z-index: 20;
+  bottom: 34rpx;
+  right: 34rpx;
+  background: #2b5245;
+  color: white;
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  box-shadow: 0 10rpx 35rpx #173c3240;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column
+}
+
+.fab-plus {
+  font-size: 38rpx;
+  line-height: 34rpx
+}
+
+.fab-label {
+  font-size: 17rpx;
+  margin-top: 7rpx
+}

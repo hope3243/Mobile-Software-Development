@@ -1,0 +1,21 @@
+<view class="card">
+  <view class="picture" style="height:{{photo.height}}rpx" bindtap="open">
+    <image wx:if="{{!failed}}" src="{{photo.cover}}" mode="aspectFill" lazy-load binderror="fallback" />
+    <view wx:else class="fallback">FRAME<text>图片暂时无法加载</text></view><text
+      class="category">{{photo.category}}</text><text wx:if="{{photo.images.length > 1}}" class="count">▧
+      {{photo.images.length}}</text>
+  </view>
+  <view class="body">
+    <view class="title" bindtap="open">{{photo.title}}</view>
+    <view class="meta">
+      <view class="author" bindtap="author">
+        <image wx:if="{{photo.avatarUrl}}" class="mini-avatar" src="{{photo.avatarUrl}}" mode="aspectFill" />
+        <text wx:else class="dot"></text>{{photo.nickName}}
+      </view>
+      <view class="favorite {{photo.liked ? 'saved' : ''}}" catchtap="like">
+        <text class="heart">{{photo.liked ? '♥' : '♡'}}</text>
+        <text class="like-count">{{photo.likeCount || 0}}</text>
+      </view>
+    </view>
+  </view>
+</view>

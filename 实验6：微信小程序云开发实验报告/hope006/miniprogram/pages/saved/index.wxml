@@ -1,0 +1,21 @@
+<view class="page">
+  <view class="eyebrow">YOUR LITTLE GALLERY</view>
+  <view class="heading spaced">收藏一些心动</view>
+  <view class="muted spaced">{{count}} 件收藏 · 灵感在这里，慢慢生长</view>
+ 
+  <view wx:if="{{error}}" class="error spaced" bindtap="load">{{error}} · 点击重试</view>
+  <view class="columns">
+    <view class="column">
+      <photo-card wx:for="{{left}}" wx:key="_id" photo="{{item}}" bind:likechange="likeChange" />
+    </view>
+    <view class="column">
+      <photo-card wx:for="{{right}}" wx:key="_id" photo="{{item}}" bind:likechange="likeChange" />
+    </view>
+  </view>
+  <view wx:if="{{loading}}" class="loading">正在整理收藏…</view>
+  <view wx:if="{{!count}}" class="empty">
+    <view class="empty-symbol">♡</view>
+    <view class="empty-title">给喜欢的瞬间，留个位置</view>打开作品，轻点收藏<view class="secondary spaced" bindtap="discover">
+      去发现灵感 ↗</view>
+  </view>
+</view>
