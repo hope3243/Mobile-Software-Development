@@ -1,0 +1,53 @@
+<view class="page-wrap {{isDark ? 'dark' : ''}}" style="background-color: {{isDark ? '#1a1a1a' : '#f0f2f5'}};">
+<!--登录面板-->
+<view id='myLogin'>
+  <image class='login-bg' src='/images/login-bg.jpg' mode='aspectFill'></image>
+  <view class='login-mask'></view>
+  <view class='login-content'>
+    <block wx:if='{{isLogin}}'>
+      <image id='myIcon' src='{{src}}' mode='aspectFill'></image>
+      <text id='nickName'>{{nickName}}</text>
+      <view class="theme-switch" bindtap="toggleTheme">
+        <text>{{isDark ? '☀️ 日间模式' : '🌙 夜间模式'}}</text>
+      </view>
+      <text class='logout-btn' bindtap='logout'>退出登录</text>
+    </block>
+    <block wx:elif='{{!showLoginForm}}'>
+      <button id='loginBtn' bindtap='showLogin'>未登录，点此登录</button>
+    </block>
+    <block wx:else>
+      <view class="avatar-box">
+        <image class='avatar' src='{{userInfo.avatarUrl}}' mode='aspectFill'></image>
+        <button class='avatar-btn' open-type='chooseAvatar' bind:chooseavatar='onChooseAvatar'></button>
+      </view>
+      <input type='nickname' class='nickname-input' placeholder='请输入昵称' bindinput='onInputChange' value='{{userInfo.nickName}}' />
+      <view class='login-actions'>
+        <button size='mini' type='primary' bindtap='confirmLogin'>完成登录</button>
+        <text class='login-cancel' bindtap='hideLogin'>取消</text>
+      </view>
+    </block>
+  </view>
+</view>
+<!--我的收藏-->
+<view id='myFavorites'>
+  <view class="fav-header">
+    <view class="fav-bar"></view>
+    <text>我的收藏({{num}})</text>
+  </view>
+  <view id='news-list'>
+    <view class='list-item' wx:for='{{newsList}}' wx:for-item='news' wx:key="id" bindtap='goToDetail' data-id='{{news.id}}'>
+      <view class="list-img-wrap">
+        <image src='{{news.poster}}'></image>
+        <view class="date-tag">{{news.add_date}}</view>
+      </view>
+      <view class="text-wrap">
+        <text class="news-title">{{news.title}}</text>
+        <text class="news-summary">{{news.summary}}</text>
+        <view class="news-meta">
+          <text class="meta-read">阅读 {{news.readNum||0}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+</view>

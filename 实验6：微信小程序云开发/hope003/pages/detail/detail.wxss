@@ -1,0 +1,136 @@
+page{
+  background-color:#f0f2f5;
+}
+.page-wrap{
+  min-height: 100vh;
+}
+.container {
+  padding:30rpx;
+  background: #fff;
+  margin: 20rpx;
+  border: 1rpx solid #e8e8e8;
+}
+.title {
+  font-size:36rpx;
+  font-weight:bold;
+  color:#222;
+  line-height:54rpx;
+  text-align:left;
+  margin-bottom:16rpx;
+}
+.article-meta{
+  display: flex;
+  justify-content: space-between;
+  font-size: 24rpx;
+  color: #999;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #eee;
+  margin-bottom: 24rpx;
+}
+.poster{
+  margin-bottom:24rpx;
+}
+.poster image {
+  width: 100%;
+}
+.poster-caption{
+  font-size: 22rpx;
+  color: #999;
+  text-align: right;
+  margin-top: 8rpx;
+}
+.content {
+  text-align: left;
+  font-size:30rpx;
+  line-height:56rpx;
+  color:#333;
+  white-space: pre-wrap;
+}
+.article-sign{
+  margin-top: 36rpx;
+  text-align: right;
+}
+.sign-text{
+  font-size: 22rpx;
+  color: #999;
+  line-height: 36rpx;
+}
+/*操作栏：阅读量 + 收藏*/
+.action-bar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40rpx;
+  padding-top: 24rpx;
+  border-top: 1rpx solid #eee;
+}
+.action-read{
+  font-size: 24rpx;
+  color: #999;
+}
+.fav-btn{
+  display: flex;
+  align-items: center;
+  padding: 12rpx 32rpx;
+  border: 1rpx solid #ddd;
+  border-radius: 40rpx;
+}
+.fav-btn.faved{
+  border-color: #e74c3c;
+  background: #fef5f5;
+}
+.fav-icon{
+  font-size: 28rpx;
+  margin-right: 8rpx;
+}
+.fav-text{
+  font-size: 26rpx;
+  color: #666;
+}
+.fav-btn.faved .fav-text{
+  color: #e74c3c;
+}
+
+/* ========== 夜间模式 ========== */
+.page-wrap.dark{
+  background: #1a1a1a;
+}
+.dark .container{
+  background: #2a2a2a;
+  border-color: #333;
+}
+.dark .title{
+  color: #eee;
+}
+.dark .article-meta{
+  color: #888;
+  border-bottom-color: #333;
+}
+.dark .content{
+  color: #ccc;
+}
+.dark .sign-text{
+  color: #777;
+}
+.dark .poster-caption{
+  color: #777;
+}
+.dark .action-bar{
+  border-top-color: #333;
+}
+.dark .action-read{
+  color: #777;
+}
+.dark .fav-btn{
+  border-color: #444;
+}
+.dark .fav-text{
+  color: #aaa;
+}
+.dark .fav-btn.faved .fav-text{
+  color: #ff6b6b;
+}
+.dark .fav-btn.faved{
+  border-color: #ff6b6b;
+  background: rgba(255,107,107,0.1);
+}

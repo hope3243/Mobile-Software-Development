@@ -1,0 +1,30 @@
+<view class="page-wrap {{isDark ? 'dark' : ''}}" style="background-color: {{isDark ? '#1a1a1a' : '#f0f2f5'}};">
+<view class='container'>
+  <view class='title'>{{article.title}}</view>
+  <view class="article-meta">
+    <text>{{article.add_date}}</text>
+  </view>
+  <view class='poster'>
+    <image src='{{article.poster}}' mode='widthFix'></image>
+    <view class="poster-caption" wx:if="{{article.photographer}}">图 / {{article.photographer}}</view>
+  </view>
+  <rich-text class="content" nodes="{{article.richContent}}"></rich-text>
+  <view class="article-sign">
+    <view class="sign-text" wx:if="{{article.author}}">文 / {{article.author}}</view>
+    <view class="sign-text" wx:if="{{article.photographer}}">图 / {{article.photographer}}</view>
+    <view class="sign-text" wx:if="{{article.editor}}">编辑 / {{article.editor}}</view>
+  </view>
+  <!--操作栏：阅读量 + 收藏-->
+  <view class="action-bar">
+    <text class="action-read">阅读 {{article.readNum||0}}</text>
+    <view wx:if="{{isAdd}}" class="fav-btn faved" bindtap="cancelFavorites">
+      <text class="fav-icon">❤️</text>
+      <text class="fav-text">已收藏</text>
+    </view>
+    <view wx:else class="fav-btn" bindtap="addFavorites">
+      <text class="fav-icon">🤍</text>
+      <text class="fav-text">收藏</text>
+    </view>
+  </view>
+</view>
+</view>
