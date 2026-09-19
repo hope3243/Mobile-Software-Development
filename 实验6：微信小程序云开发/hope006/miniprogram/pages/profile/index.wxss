@@ -1,0 +1,126 @@
+.page {
+  padding-bottom: 220rpx
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 38rpx 0 34rpx
+}
+
+.avatar-button {
+  width: 96rpx;
+  height: 96rpx;
+  flex: 0 0 96rpx;
+  border-radius: 50%;
+  background: #dce6d1;
+  color: #42613d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: serif;
+  font-size: 46rpx;
+  overflow: hidden;
+  padding: 0
+}
+
+.avatar-button image {
+  width: 100%;
+  height: 100%
+}
+
+.profile-info {
+  flex: 1;
+  min-width: 0;
+  margin: 0 20rpx
+}
+
+.profile-info .heading {
+  font-size: 34rpx;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: keep-all
+}
+
+.profile-info .muted {
+  white-space: nowrap;
+  margin-top: 8rpx
+}
+
+.edit-button {
+  flex: 0 0 104rpx;
+  border: 1rpx solid #d8e0d1;
+  border-radius: 32rpx;
+  padding: 13rpx 0;
+  text-align: center;
+  font-size: 22rpx;
+  color: #526655;
+  background: #f1f4ec
+}
+
+.stats {
+  background: #eaf0e1;
+  border-radius: 24rpx;
+  display: flex;
+  padding: 32rpx 0
+}
+
+.stats-item {
+  width: 50%;
+  text-align: center;
+  color: #8b9780;
+  font-size: 21rpx
+}
+
+.stats-item+.stats-item {
+  border-left: 1rpx solid #d8e1d1
+}
+
+.stats text {
+  display: block;
+  color: #34523d;
+  font-size: 38rpx;
+  font-weight: 600;
+  margin-bottom: 12rpx
+}
+
+.section-publish {
+  flex: 0 0 auto;
+  border: 1rpx solid #cfdac8;
+  border-radius: 30rpx;
+  padding: 12rpx 24rpx;
+  color: #42604c;
+  background: #f5f7f1;
+  font-size: 22rpx;
+  line-height: 1.4
+}
+
+.publish-fab {
+  position: fixed;
+  z-index: 20;
+  right: 38rpx;
+  bottom: 38rpx;
+  width: 94rpx;
+  height: 94rpx;
+  border-radius: 50%;
+  background: #2b5245;
+  color: #fff;
+  box-shadow: 0 10rpx 34rpx rgba(23, 60, 50, .25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center
+}
+
+.fab-plus {
+  font-size: 37rpx;
+  line-height: 32rpx
+}
+
+.fab-label {
+  font-size: 17rpx;
+  margin-top: 7rpx
+}

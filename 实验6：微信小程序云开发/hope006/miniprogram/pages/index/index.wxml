@@ -1,0 +1,53 @@
+<view class="page">
+  <view class="row between brand">
+    <view class="row">
+      <view class="brandmark">拾</view>
+      <view>
+        <view class="brandname">拾光<text>FRAME</text></view>
+        <view class="muted">让每个平凡瞬间，都有回响</view>
+      </view>
+    </view>
+    <view class="issue">VOL. 006<view>光影日记</view>
+    </view>
+  </view>
+  <view class="hero" bindtap="topic">
+    <image src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1000&q=85"
+      mode="aspectFill" />
+    <view class="shade"></view>
+    <view class="hero-copy">
+      <view class="hero-label">本期灵感 · INTO THE GREEN</view>
+      <view class="hero-title">去自然里，<view>找回生活的底色。</view>
+      </view>
+      <view class="hero-bottom">用镜头收藏，一点自由<text>探索自然 ↗</text></view>
+    </view>
+  </view>
+  <view class="notice" wx:if="{{!isCloud}}">本地体验 · 精选为示例作品，发布内容仅保存在本机</view>
+  <view class="search row"><text class="search-icon">⌕</text><input placeholder="搜索作品、灵感或创作者"
+      value="{{keyword}}" bindinput="searchInput" bindconfirm="search" confirm-type="search" />
+    <view wx:if="{{keyword}}" class="clear-search" bindtap="clearSearch">×</view>
+  </view>
+  <scroll-view scroll-x class="tabs">
+    <view wx:for="{{categories}}" wx:key="*this" class="tab {{category===item?'selected':''}}"
+      data-value="{{item}}" bindtap="filter">{{item}}</view>
+  </scroll-view>
+  <view class="row between">
+    <view class="section-title">{{keyword ? '搜索结果' : '发现好光景'}}<text class="green-dot"></text></view><text
+      class="muted">按最新发布</text>
+  </view>
+  <view wx:if="{{error}}" class="error spaced" bindtap="reload">{{error}} · 点击重试</view>
+  <view class="columns">
+    <view class="column">
+      <photo-card wx:for="{{left}}" wx:key="_id" photo="{{item}}" />
+    </view>
+    <view class="column">
+      <photo-card wx:for="{{right}}" wx:key="_id" photo="{{item}}" />
+    </view>
+  </view>
+  <view wx:if="{{!loading && !left.length && !error}}" class="empty">
+    <view class="empty-symbol">⌕</view>
+    <view class="empty-title">还没有遇见这束光</view>换个关键词，或发布第一张作品
+  </view>
+  <view class="loading">{{loading?'正在收集好光景…':hasMore?'继续向下，发现更多':'— 把平凡的日子，拍成喜欢的样子 —'}}</view>
+  <view class="publish-fab" bindtap="add"><text class="fab-plus">＋</text><text class="fab-label">发布</text>
+  </view>
+</view>

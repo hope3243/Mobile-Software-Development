@@ -1,0 +1,82 @@
+<view wx:if="{{loading}}" class="empty">正在打开这一刻…</view>
+<view wx:elif="{{error}}" class="page">
+  <view class="error" bindtap="load">{{error}} · 点击重试</view><button class="secondary spaced"
+    bindtap="home">回到发现</button>
+</view>
+<view wx:elif="{{photo}}">
+  <view class="gallery">
+    <swiper current="{{current}}" bindchange="slide" indicator-dots="{{photo.images.length > 1}}"
+      indicator-active-color="#ffffff" class="swiper">
+      <swiper-item wx:for="{{photo.images}}" wx:key="*this">
+        <image src="{{item}}" mode="aspectFit" bindtap="preview" binderror="imageError" />
+      </swiper-item>
+    </swiper><text class="image-counter">{{current+1}} / {{photo.images.length}}</text><text
+      class="preview-label" bindtap="preview">轻点查看原图 ↗</text>
+  </view>
+  <view class="page detail-body">
+    <view class="row between"><text class="pill">{{photo.category}}</text><text class="muted">{{photo.date}} ·
+        {{photo.location || '某个值得记住的地方'}}</text></view>
+    <view class="detail-title">{{photo.title}}</view>
+    <view class="story">{{photo.description || '有些心情，照片已经替我说了。'}}</view>
+    <view class="author-box row between" bindtap="author">
+      <view class="row">
+        <image wx:if="{{photo.avatarUrl}}" class="author-avatar" src="{{photo.avatarUrl}}"
+          mode="aspectFill" />
+        <view wx:else class="author-avatar">{{initial}}</view>
+        <view>
+          <view class="author-name">{{photo.nickName}}</view>
+          <view class="muted">看看 TA 镜头里的世界</view>
+        </view>
+      </view><text>↗</text>
+    </view>
+    <view wx:if="{{photo.demo}}" class="notice">社区示例作品 · 用于展示浏览效果</view>
+    <view wx:if="{{imageFailed}}" class="notice">图片加载失败，请检查网络；本地图片可能已被清理。</view>
+    <view class="social-actions">
+      <view class="social-action {{photo.liked ? 'active' : ''}}" bindtap="like">
+        <text class="social-icon">{{photo.liked ? '♥' : '♡'}}</text><text class="social-label">点赞</text><text
+          class="social-count">{{photo.likeCount || 0}}</text>
+      </view>
+      <view class="social-action {{photo.saved ? 'active' : ''}}" bindtap="save">
+        <text class="social-icon">{{photo.saved ? '★' : '☆'}}</text><text class="social-label">收藏</text><text
+          class="social-count">{{photo.favoriteCount || 0}}</text>
+      </view>
+      <view class="social-action" bindtap="focusComment">
+        <text class="social-icon">◌</text><text class="social-label">评论</text><text
+          class="social-count">{{photo.commentCount || 0}}</text>
+      </view>
+    </view>
+    <view class="utility-actions">
+      <button class="utility-action" bindtap="download" loading="{{downloading}}" disabled="{{downloading}}">↓
+        保存原图</button>
+      <button wx:if="{{shareable}}" class="utility-action" open-type="share">↗ 分享作品</button>
+      <button wx:else class="utility-action" bindtap="localShare">↗ 分享说明</button>
+    </view>
+    <view id="comments" class="comments-section">
+      <view class="row between comments-heading">
+        <view class="section-title">评论</view><text class="muted">{{photo.commentCount || 0}} 条</text>
+      </view>
+      <view class="composer">
+        <input value="{{commentText}}" maxlength="200" focus="{{commentFocused}}" bindinput="commentInput"
+          bindconfirm="sendComment" confirm-type="send" placeholder="说说你看到的这一刻…" />
+        <view class="send-button {{commenting ? 'disabled' : ''}}" bindtap="sendComment">
+          {{commenting?'发送中':'发送'}}
+        </view>
+      </view>
+      <view wx:if="{{!photo.comments.length}}" class="comment-empty">还没有评论，留下第一句话吧</view>
+      <view wx:for="{{photo.comments}}" wx:key="_id" class="comment-item">
+        <image wx:if="{{item.avatarUrl}}" class="comment-avatar" src="{{item.avatarUrl}}" mode="aspectFill" />
+        <view wx:else class="comment-avatar comment-initial">{{item.initial}}</view>
+        <view class="comment-body">
+          <view class="row between"><text class="comment-name">{{item.nickName}}</text><text
+              class="comment-time">{{item.time}}</text></view>
+          <view class="comment-content">{{item.content}}</view>
+          <text wx:if="{{item.mine}}" class="comment-delete" data-id="{{item._id}}"
+            bindtap="removeComment">删除</text>
+        </view>
+      </view>
+    </view>
+    <button wx:if="{{mine}}" class="delete" bindtap="remove"
+      disabled="{{deleting}}">{{deleting?'正在删除…':'删除这件作品'}}</button>
+    <view class="endnote">THIS MOMENT, FOREVER.</view>
+  </view>
+</view>

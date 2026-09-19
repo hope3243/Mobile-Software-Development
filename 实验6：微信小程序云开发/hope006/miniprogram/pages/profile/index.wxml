@@ -1,0 +1,45 @@
+<view class="page">
+  <view class="eyebrow">MY FRAME OF LIFE</view>
+  <view class="profile"><button class="avatar-button" open-type="chooseAvatar" bindchooseavatar="avatar">
+      <image wx:if="{{profile.avatarUrl}}" src="{{profile.avatarUrl}}" mode="aspectFill" /><text
+        wx:else>拾</text>
+    </button>
+    <view class="profile-info">
+      <view class="heading">{{profile.nickName}}</view>
+      <view class="muted spaced">记录生活，也记录自己。</view>
+    </view>
+    <view class="edit-button" bindtap="edit">编辑</view>
+  </view>
+  <view class="stats">
+    <view class="stats-item"><text>{{publishedCount}}</text>发布作品</view>
+    <view class="stats-item"><text>{{savedCount}}</text>收藏作品</view>
+  </view>
+  <view wx:if="{{editing}}" class="field">
+    <view class="label">给自己取个名字</view><input type="nickname" maxlength="20" value="{{nameInput}}"
+      bindinput="nameInput" placeholder="你的创作者昵称" /><button class="primary spaced"
+      bindtap="saveProfile">保存资料</button>
+  </view>
+  <view class="notice" wx:if="{{!isCloud}}">本地体验模式 · 作品仅保存在当前设备。头像与昵称由你主动填写。</view>
+  <view class="row between section">
+    <view class="section-title">我的光影集</view>
+    <view class="section-publish" bindtap="add">＋ 发布作品</view>
+  </view>
+  <view class="error spaced" wx:if="{{error}}" bindtap="reload">{{error}} · 点击重试</view>
+  <view class="columns">
+    <view class="column">
+      <photo-card wx:for="{{left}}" wx:key="_id" photo="{{item}}" />
+    </view>
+    <view class="column">
+      <photo-card wx:for="{{right}}" wx:key="_id" photo="{{item}}" />
+    </view>
+  </view>
+  <view class="empty" wx:if="{{!rows.length && !loading && !error}}">
+    <view class="empty-symbol">▧</view>
+    <view class="empty-title">故事，从第一张照片开始</view>今天，有什么值得被记住？<button class="primary spaced"
+      bindtap="add">发布我的第一件作品</button>
+  </view>
+  <view class="loading" wx:if="{{loading}}">正在整理光影…</view>
+  <view class="endnote">KEEP A LITTLE LIGHT.</view>
+  <view class="publish-fab" bindtap="add"><text class="fab-plus">＋</text><text class="fab-label">发布</text>
+  </view>
+</view>

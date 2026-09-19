@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/saved/index",
+    "pages/profile/index",
+    "pages/add/add",
+    "pages/detail/detail",
+    "pages/homepage/homepage"
+  ],
+  "window": {
+    "navigationBarTitleText": "拾光 · FRAME",
+    "navigationBarBackgroundColor": "#f7f8f2",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f7f8f2",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#8b938c",
+    "selectedColor": "#244f43",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "发现",
+        "iconPath": "images/nav/discover-v2.png",
+        "selectedIconPath": "images/nav/discover-v2-active.png"
+      },
+      {
+        "pagePath": "pages/saved/index",
+        "text": "收藏",
+        "iconPath": "images/nav/bookmark-v2.png",
+        "selectedIconPath": "images/nav/bookmark-v2-active.png"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的",
+        "iconPath": "images/nav/person-v2.png",
+        "selectedIconPath": "images/nav/person-v2-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents",
+  "sitemapLocation": "sitemap.json"
+}
